@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import create_db_and_tables
+import app.firebase
 
 app = FastAPI(title="Donezo API", version="1.0.0")
 
