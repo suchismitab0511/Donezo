@@ -4,6 +4,7 @@ from app.database import create_db_and_tables
 import app.firebase
 from app.routers import auth
 from app.routers import tasks
+from app.routers import subtasks
 
 
 app = FastAPI(title="Donezo API", version="1.0.0")
@@ -18,6 +19,7 @@ app.add_middleware(
 
 app.include_router(auth.router)
 app.include_router(tasks.router)
+app.include_router(subtasks.router)
 
 @app.on_event("startup")
 def on_startup():
