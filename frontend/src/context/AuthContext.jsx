@@ -28,6 +28,17 @@ export function AuthProvider({ children }) {
         const idToken = await firebaseUser.getIdToken();
         setUser(firebaseUser);
         setToken(idToken);
+
+        try {
+          await fetch("http://localhost:8000/api/auth/login", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${idToken}`,
+            },
+          });
+        } catch (e) {
+          console.error("Auth sync failed", e);
+        }
       } else {
         setUser(null);
         setToken(null);
